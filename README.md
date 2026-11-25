@@ -37,17 +37,65 @@ python tools/diagnose.py --port COM5 set-limit 800
 python tools/diagnose.py --port COM5 monitor --duration 3600 --csv log.csv
 ```
 
-## Test results
-Fill in from your own runs.
+## Build & Test Results
 
-| Test | Result |
+### 1. Firmware Build Environment
+
+| Parameter | Configuration |
 |---|---|
-| Soak test duration | __ h |
-| Samples per second | __ |
-| I2C errors | __ |
-| Reading vs multimeter | __ mA difference |
-| Over-current fault triggers FAULT state | yes / no |
-| Watchdog resets board after `crash` | yes / no |
+| Microcontroller | ESP32 Dev Module |
+| Platform | Espressif 32 |
+| Framework | Arduino |
+| Build Tool | PlatformIO |
+| Compiler | Xtensa ESP32 GCC |
+| Language Standard | C++17 |
+| Build Command | `pio run` |
 
-## Photos / demo
-Add a wiring photo, serial screenshot and demo video link in `docs/`.
+### 2. Compilation Results
+
+**Build Status: SUCCESS**
+
+The firmware was successfully compiled using PlatformIO without requiring physical hardware.
+
+| Test Parameter | Result |
+|---|---:|
+| Firmware compilation | PASS |
+| INA219 driver compilation | PASS |
+| Main firmware compilation | PASS |
+| ESP32 firmware binary generation | PASS |
+| Build time | 572.98 seconds |
+
+### 3. Memory Usage
+
+| Memory Type | Used | Available | Usage |
+|---|---:|---:|---:|
+| RAM | 22,024 bytes | 327,680 bytes | 6.7% |
+| Flash | 303,813 bytes | 1,310,720 bytes | 23.2% |
+
+### 4. Generated Firmware
+
+Successful compilation generated the following firmware binary:
+
+` .pio/build/esp32dev/firmware.bin `
+
+### 5. Testing Status
+
+| Feature | Testing Status |
+|---|---|
+| Firmware compilation | PASS |
+| INA219 driver compilation | PASS |
+| Memory usage analysis | PASS |
+| UART command execution | Pending |
+| INA219 sensor communication | Pending hardware |
+| Voltage and current measurement | Pending hardware |
+| Overcurrent fault detection | Pending runtime testing |
+| Watchdog reset | Pending hardware testing |
+
+### 6. Testing Notes
+
+- Firmware compilation was completed successfully using PlatformIO.
+- No physical ESP32 or INA219 sensor was connected during this test.
+- Hardware-dependent functionality has not yet been verified.
+- A compiler warning was reported in the ESP32 Arduino framework's UART source file; the build completed successfully despite this warning.
+
+**Overall Result:** ESP32 firmware compilation completed successfully. Hardware validation and runtime testing are planned for the next stage.
