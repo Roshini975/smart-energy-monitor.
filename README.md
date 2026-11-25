@@ -54,6 +54,9 @@ python tools/diagnose.py --port COM5 monitor --duration 3600 --csv log.csv
 ### 2. Compilation Results
 
 **Build Status: SUCCESS**
+<img width="1187" height="202" alt="image" src="https://github.com/user-attachments/assets/b4557bbf-74f3-43ce-bca7-7f7e25ff49bf" />
+
+
 
 The firmware was successfully compiled using PlatformIO without requiring physical hardware.
 
